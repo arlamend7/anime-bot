@@ -60,12 +60,6 @@ namespace Selenium
             {
                 Console.WriteLine($"{item.Name} - {item.Link} - {item.Episodios.FirstOrDefault()}");
             }
-       
-
-            
-        
-
-            
 
         }
         
