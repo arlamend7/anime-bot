@@ -10,8 +10,9 @@ namespace Animes.Domain.Episodios.Entities
         public virtual string ExtraText { get; set; }
         public virtual Anime Anime { get; protected set; }
         public virtual Enum Duplagem { get; set; }
-        public Episode(string name, int number, string extraText)
+        public Episode(Anime anime, string name, int number, string extraText)
         {
+            Anime = anime;
             Name = name;
             Number = number;
             ExtraText = extraText;

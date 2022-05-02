@@ -1,5 +1,5 @@
-﻿using Animes.Applications.Animes.DataTransfers.Requests;
-using Animes.Applications.Episodes.DataTransfers.Requests;
+﻿using Animes.Applications.Episodes.DataTransfers.Requests;
+using Animes.Domain.Animes.Entities;
 using Animes.Domain.Episodios.Entities;
 using AutoMapper;
 using Libs.Base.Commands;
@@ -8,11 +8,6 @@ using Libs.Base.Models.Requests;
 using Libs.Base.Repositories;
 using Libs.Base.Serivces;
 using Libs.Base.Serivces.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Animes.Applications.Episodes.Services
 {
@@ -39,7 +34,11 @@ namespace Animes.Applications.Episodes.Services
 
         protected override Episode Insert(InsertCommand<Episode> command, InsertRequest<Episode> request)
         {
-            throw new NotImplementedException();
+            EpisodioInsertRequest InsertRequest = request as EpisodioInsertRequest;
+            Anime anime = _queryService.Validate<Anime>(InsertRequest.AnimeId);
+
+            return command.Construct(anime, InsertRequest.Name, InsertRequest.Number, InsertRequest.ExtraText)
+                .Execute();
         }
 
         protected override Episode Update(UpdateCommand<Episode> command, UpdateRequest<Episode> request)
