@@ -10,8 +10,4 @@
     <ProjectReference Include="..\Libs.Base\Libs.Base.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Episodes\Profiles\" />
-  </ItemGroup>
-
 </Project>

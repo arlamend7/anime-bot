@@ -51,18 +51,22 @@ namespace CDL.Integration.Workers.Workers.Animes
         public void Execute()
         {
             int currentPage = 1;
-            bool allRecovered = false;
+            bool allCreated = false;
             List<AnimeInsertRequest> animeList = new List<AnimeInsertRequest>();
 
             _webDriver.Url = "https://saikoanimes.net/";
             
-            while (!allRecovered)
+            while (!allCreated)
             {
                 _webDriver.Url = $"https://saikoanimes.net/?fwp_paged={currentPage++}";
                 
                 IEnumerable<IWebElement> animeElements = _webDriver.FindElements(By.ClassName("view-first"));
-
-                allRecovered = animeElements.Select(element => (anime: GetOrCreateAnime(element), element))
+                if (!animeElements.Any())
+                {
+                    allCreated = true;
+                    continue;
+                }
+                allCreated = !animeElements.Select(element => (anime: GetOrCreateAnime(element), element))
                                             .All(x => CreateEpisode(x.anime, x.element));        
             }
         }
@@ -92,12 +96,12 @@ namespace CDL.Integration.Workers.Workers.Animes
             {
                 AnimeId = animeResponse.Id,
                 Name = epsodioText,
-                Number = int.Parse(episodeInfo[0]),
+                Number = episodeInfo[0],
                 ExtraText = episodeInfo.Last() != episodeInfo[0] ? episodeInfo.Last() : null,
             };
 
             PaginatedResponse<EpisodeResponse> episodio = _episodesAppService.Get<EpisodeResponse>(new EpisodeQueryRequest() { AnimeId = animeResponse.Id, Number = episodioInsertRequest.Number, Qt = 1 });
-            if(episodio is null)
+            if(!episodio.Registros.Any())
             {
                 _episodesAppService.Insert<EpisodeResponse>(episodioInsertRequest);
                 return true;

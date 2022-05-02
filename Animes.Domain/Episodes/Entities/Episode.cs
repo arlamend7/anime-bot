@@ -6,7 +6,7 @@ namespace Animes.Domain.Episodios.Entities
     public class Episode : EntityBase
     {
         public virtual string Name { get; set; }
-        public virtual int Number { get; set; }
+        public virtual string Number { get; set; }
         public virtual string ExtraText { get; set; }
         public virtual Anime Anime { get; protected set; }
         public virtual Enum Duplagem { get; set; }
@@ -15,7 +15,7 @@ namespace Animes.Domain.Episodios.Entities
         {
             
         }
-        public Episode(string name, int number, string extraText)
+        public Episode(Anime anime,string name, string number, string extraText)
         {
             Anime = anime;
             Name = name;
