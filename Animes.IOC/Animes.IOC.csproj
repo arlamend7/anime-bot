@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Animes.Applications\Animes.Applications.csproj" />
+    <ProjectReference Include="..\Animes.Domain\Animes.Domain.csproj" />
+    <ProjectReference Include="..\Libs.Base\Libs.Base.csproj" />
+    <ProjectReference Include="..\Libs.Nhibernate\Libs.Nhibernate.csproj" />
+  </ItemGroup>
+
+</Project>
