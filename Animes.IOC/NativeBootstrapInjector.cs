@@ -13,7 +13,7 @@ namespace Animes.IOC
         public static void AddInternalDependencies(this IServiceCollection services)
         {
             services.ConfigureNhibernate<AnimesMap, Anime>(SQLiteConfiguration.Standard
-                                                           .UsingFile(@"D:\Nova pasta\db\banco.sqlite")
+                                                           .UsingFile(@"C:\ProjetosEstudos\NhibernateImplementacao\bancosauros.sqlite")
                                                            .ShowSql()
                                                            .FormatSql());
 

@@ -58,7 +58,7 @@ namespace CDL.Integration.Workers.Workers.Animes
             
             while (!allRecovered)
             {
-                _webDriver.Url = $"https://saikoanimes.net/?fwp_paged={currentPage}";
+                _webDriver.Url = $"https://saikoanimes.net/?fwp_paged={currentPage++}";
                 
                 IEnumerable<IWebElement> animeElements = _webDriver.FindElements(By.ClassName("view-first"));
 
