@@ -10,6 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\LIb.Discord\LIb.Discord.csproj" />
     <ProjectReference Include="..\Libs.Base\Libs.Base.csproj" />
   </ItemGroup>
 

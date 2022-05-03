@@ -5,6 +5,7 @@ using Animes.Applications.Episodes.DataTransfers.Requests;
 using Animes.Applications.Episodes.DataTransfers.Responses;
 using Animes.Domain.Animes.Entities;
 using Animes.Domain.Episodios.Entities;
+using Discord;
 using Libs.Base.Injectors.Interfaces;
 using Libs.Base.Models;
 using Libs.Base.Serivces.Interfaces;

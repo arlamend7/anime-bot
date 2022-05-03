@@ -13,6 +13,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Animes.Applications\Animes.Applications.csproj" />
     <ProjectReference Include="..\Animes.Domain\Animes.Domain.csproj" />
+    <ProjectReference Include="..\LIb.Discord\LIb.Discord.csproj" />
     <ProjectReference Include="..\Libs.Base\Libs.Base.csproj" />
     <ProjectReference Include="..\Libs.Nhibernate\Libs.Nhibernate.csproj" />
   </ItemGroup>
