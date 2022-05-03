@@ -2,6 +2,7 @@ using CDL.Integration.Workers;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Serilog;
+using System.Diagnostics;
 
 public static class Program
 {
@@ -15,6 +16,8 @@ public static class Program
 
             var build = BuildWebHost(args);
 
+            var browserExecutable = "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe";
+            Process.Start(browserExecutable, "http://localhost:5000");
             build.Run();
         }
         catch (Exception ex)

@@ -11,7 +11,6 @@ namespace CDL_Integration.Workers.Logs
         {
             this.logger = logger;
         }
-
         public string Name => "LogsJobsListener";
 
         public Task JobExecutionVetoed(IJobExecutionContext context, CancellationToken cancellationToken = default(CancellationToken))
@@ -22,8 +21,7 @@ namespace CDL_Integration.Workers.Logs
         public Task JobToBeExecuted(IJobExecutionContext context, CancellationToken cancellationToken = default(CancellationToken))
         {
             LogContext.PushProperty("TransactionId", context.FireInstanceId);
-
-
+            
             DateTime? fireTime = context.FireTimeUtc.LocalDateTime;
             this.logger.LogInformation("<{EventoId}> {Job} - Iniciado em {FireTime}",
                 "JobToBeExecuted",
