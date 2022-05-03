@@ -5,16 +5,15 @@ using Libs.Base.Triggers.Enums;
 
 namespace Animes.Domain.Animes.Triggers
 {
-    internal class DiscordAnimeEvent : InsertTrigger<Anime>
+    public class DiscordAnimeEvent : InsertTrigger<Anime>
     {
         private readonly IDiscordChannels discordChannels;
+        public override TriggerOnResult OnResult => TriggerOnResult.Continue;
 
         public DiscordAnimeEvent(IDiscordChannels discordChannels)
         {
             this.discordChannels = discordChannels;
         }
-
-        public override TriggerOnResult OnResult => TriggerOnResult.Continue;
 
         protected override void OnTrigger(Anime entity)
         {

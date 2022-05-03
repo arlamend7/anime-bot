@@ -33,10 +33,11 @@ namespace Libs.Base.Configurations
         /// <returns></returns>
         public LibConfigure AddAssembly<T>()
         {
+            var types =
             typeof(T).Assembly.ExportedTypes
                        .Where(type => !type.IsAbstract && !type.IsInterface && SearchTypes.Any(x => type.ImplementsOrDerives(x)))
-                       .ToList()
-                       .ForEach(type => _services.AddScoped(type));
+                       .ToList();
+            types.ForEach(type => _services.AddScoped(type));
             return this;
         }
         public LibConfigure AddAutoMapper<T>()

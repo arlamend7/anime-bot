@@ -13,7 +13,9 @@ public static class Program
         {
             Log.Information("Iniciando aplicação...");
 
-            BuildWebHost(args).Run();
+            var build = BuildWebHost(args);
+
+            build.Run();
         }
         catch (Exception ex)
         {

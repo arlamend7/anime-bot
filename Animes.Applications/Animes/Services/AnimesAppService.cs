@@ -34,7 +34,6 @@ namespace Animes.Applications.Animes.Services
         protected override Anime Insert(InsertCommand<Anime> command, InsertRequest<Anime> request)
         {
             AnimeInsertRequest InsertRequest = request as AnimeInsertRequest;
-
             return command.Construct(InsertRequest.Name, InsertRequest.ImageUrl, InsertRequest.Link)
                         .Execute();
 
