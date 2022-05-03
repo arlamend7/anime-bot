@@ -17,7 +17,6 @@ namespace Animes.IOC
                                                            .UsingFile(@"D:\Freelances\Bot\anime-bot\database.sqlite")
                                                            .ShowSql()
                                                            .FormatSql());
-            services.InjectBot();
             services.ConfigureLib()
                     .AddAutoMapper<AnimeInsertRequest>()
                     .AddAssembly<AnimeInsertRequest>()

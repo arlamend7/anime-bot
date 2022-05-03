@@ -4,6 +4,7 @@ using CDL.Integration.Workers.Workers.Animes;
 using CDL_Integration.Workers.Extensions;
 using CDL_Integration.Workers.Logs;
 using CrystalQuartz.AspNetCore;
+using LIb.Discord;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Rewrite;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
@@ -42,7 +43,7 @@ namespace CDL.Integration.Workers
             });
 
             services.AddScoped<IWebDriver>(x => new ChromeDriver(@"D:\Freelances\Bot\anime-bot\Drivers\"));
-
+            services.InjectBot();
             services.AddSingleton<IJobFactory, ScheduledJobFactory>();
             services.AddSingleton<IJobListener, LogsJobListener>();
             services.AddSingleton<IScheduler>(provider =>

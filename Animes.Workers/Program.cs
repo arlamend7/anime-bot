@@ -1,6 +1,5 @@
 using CDL.Integration.Workers;
 using Microsoft.AspNetCore;
-using Microsoft.AspNetCore.Hosting;
 using Serilog;
 using System.Diagnostics;
 

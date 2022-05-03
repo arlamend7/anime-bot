@@ -1,5 +1,6 @@
 ﻿using Discord;
 using Discord.WebSocket;
+using static LIb.Discord.DiscordInjector;
 
 namespace LIb.Discord
 {
@@ -18,6 +19,25 @@ namespace LIb.Discord
                 arg.Channel.SendMessageAsync($"User '{arg.Author.Username}' successfully ran helloworld!");
             }
             return Task.CompletedTask;
+        }
+
+        public static async Task MyButtonHandler(SocketMessageComponent component)
+        {
+
+                var button = new TextInputBuilder()
+                                        .WithLabel("My Text")
+                                        .WithCustomId("text_input")
+                                        .Build();
+
+
+                var modal = new ModalBuilder()
+                                    .WithTitle("Anime que voce escolheu")
+                                    .WithCustomId("assistir-episodio")
+                                    .AddTextInput("Episode", "episode_number", placeholder: "00")
+                                    .Build();
+                
+               await component.RespondWithModalAsync(modal);
+        
         }
     }
 }
