@@ -7,7 +7,7 @@ namespace Animes.Applications.Episodes.DataTransfers.Requests
     {
         public long AnimeId { get; set; }
         public string Name { get; set; }
-        public int Number { get; set; }
+        public string Number { get; set; }
         public string ExtraText { get; set; }
     }
 }

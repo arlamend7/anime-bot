@@ -14,7 +14,11 @@ namespace Animes.IOC
         public static void AddInternalDependencies(this IServiceCollection services)
         {
             services.ConfigureNhibernate<AnimesMap, Anime>(SQLiteConfiguration.Standard
+<<<<<<< HEAD
                                                            .UsingFile(@"D:\Freelances\Bot\anime-bot\database.sqlite")
+=======
+                                                           .UsingFile(@"C:\ProjetosEstudos\NhibernateImplementacao\bancosauros.sqlite")
+>>>>>>> fe2ad086a689d7ac2ab2b5f540bc422ed2cff76d
                                                            .ShowSql()
                                                            .FormatSql());
             services.InjectBot();

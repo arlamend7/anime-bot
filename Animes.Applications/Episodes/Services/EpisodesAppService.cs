@@ -25,9 +25,9 @@ namespace Animes.Applications.Episodes.Services
             {
                 query = query.Where(x => x.Anime.Id == QueryRequest.AnimeId.Value);
             }
-            if (QueryRequest.Number.HasValue)
+            if (!String.IsNullOrWhiteSpace(QueryRequest.Number))
             {
-                query = query.Where(x => x.Number == QueryRequest.Number.Value);
+                query = query.Where(x => x.Number == QueryRequest.Number);
             }
             return query;
         }

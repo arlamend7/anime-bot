@@ -42,7 +42,11 @@ namespace CDL.Integration.Workers
                 options.AllowSynchronousIO = true;
             });
 
+<<<<<<< HEAD
             services.AddScoped<IWebDriver>(x => new ChromeDriver(@"D:\Freelances\Bot\anime-bot\Drivers\"));
+=======
+            services.AddSingleton<IWebDriver>(x => new ChromeDriver(@"C:\ProjetosEstudos\NhibernateImplementacao\Drivers\"));
+>>>>>>> fe2ad086a689d7ac2ab2b5f540bc422ed2cff76d
 
             services.AddSingleton<IJobFactory, ScheduledJobFactory>();
             services.AddSingleton<IJobListener, LogsJobListener>();
