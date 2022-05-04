@@ -36,37 +36,12 @@ client.ButtonExecuted += async (component) =>
             if (args[0] == "assistir")
             {
                 
-                var modal = new ModalBuilder()
-                                    .WithTitle("Qual episodio voce gostaria de assistir?")
-                                    .WithCustomId($"{animeId}-episodio")
-                                    .AddTextInput("Episode", "episode-number", placeholder: "00")
-                                    .Build();
+                
 
                 component.RespondWithModalAsync(modal).Wait();
             }
             else
             {
-                factory.Add(() =>
-                {
-                    var entity = queryService.Get<Anime>(int.Parse(animeId));
-
-                    if (args[0] == "subscribe")
-                    {
-                        Embed embed = new EmbedBuilder()
-                                            .WithTitle(entity.Name)
-                                            .WithImageUrl(entity.ImageUrl)
-                                            .WithColor(Color.Purple)
-                                            .WithUrl(entity.Link)
-                                            .WithAuthor("Saiko", "https://saikoanimes.net/wp-content/themes/Saiko/images/logo.png", "https://saikoanimes.net/")
-                                            .Build();
-
-                        MessageComponent button = new ComponentBuilder()
-                                           .WithButton($"Unsubscribe", $"subscribe-{entity.Id}", ButtonStyle.Secondary)
-                                           .WithButton($"Assistir", $"assistir-{entity.Id}", ButtonStyle.Success)
-                                           .Build();
-                        component.User.SendMessageAsync(embed: embed, components: button).Wait();
-                    }
-                });
                 await component.RespondAsync();
             }
         };
