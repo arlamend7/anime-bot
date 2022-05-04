@@ -16,7 +16,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="NewFolder\" />
+    <None Remove="Button\" />
+    <None Remove="Executions\Base\" />
   </ItemGroup>
-
+  <ItemGroup>
+    <Folder Include="Executions\" />
+    <Folder Include="Executions\Base\" />
+  </ItemGroup>
 </Project>

@@ -14,4 +14,12 @@
     <ProjectReference Include="..\Libs.Base\Libs.Base.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="Subscriptions\" />
+    <None Remove="Subscriptions\Entity\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Subscribers\" />
+    <Folder Include="Subscribers\Entityies\" />
+  </ItemGroup>
 </Project>

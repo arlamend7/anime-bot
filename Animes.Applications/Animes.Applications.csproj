@@ -10,4 +10,16 @@
     <ProjectReference Include="..\Libs.Base\Libs.Base.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="Animes\Profiles\Custom\" />
+    <None Remove="Subscribers\" />
+    <None Remove="Subscribers\DataTransfers\" />
+    <None Remove="Subscribers\DataTransfers\Requests\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Animes\Profiles\Custom\" />
+    <Folder Include="Subscribers\" />
+    <Folder Include="Subscribers\DataTransfers\" />
+    <Folder Include="Subscribers\DataTransfers\Requests\" />
+  </ItemGroup>
 </Project>
