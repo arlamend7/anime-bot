@@ -22,14 +22,9 @@ namespace Libs.Nhibernate
         {
             return _session.Get<T>(id);
         }
-
-        public T Get<T>(Expression<Func<T, bool>> expression) where T : EntityBase
+        public virtual object Save<T>(T entity) where T : EntityBase
         {
-            return Query<T>().SingleOrDefault(expression);
-        }
-        public virtual long Save<T>(T entity) where T : EntityBase
-        {
-            return (long)_session.Save(entity);
+            return _session.Save(entity);
         }
         public virtual void Edit<T>(T entity) where T : EntityBase
         {
@@ -42,6 +37,10 @@ namespace Libs.Nhibernate
         public virtual void Delete<T>(T entity) where T : EntityBase
         {
             _session.Delete(entity);
+        }
+        public object GetAll<T>() where T : EntityBase
+        {
+            return Query<T>();
         }
     }
 }

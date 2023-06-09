@@ -1,5 +1,4 @@
 ﻿using Animes.Applications.Animes.DataTransfers;
-using Animes.Applications.Animes.DataTransfers.Requests;
 using Animes.Domain.Animes.Entities;
 using AutoMapper;
 using Libs.Base.Commands;
@@ -17,9 +16,12 @@ namespace Animes.Applications.Animes.Services
         {
         }
 
-        protected override IQueryable<Anime> Filters(IQueryable<Anime> query, PaginateRequest<Anime> request)
+        protected override PaginatedResponse<Anime> Get(PaginateRequest<Anime> request)
         {
             AnimeQueryRequest QueryRequest = request as AnimeQueryRequest;
+
+            var query = _queryService.GetAll<Anime>() as IQueryable<Anime>;
+            
             if (!string.IsNullOrWhiteSpace(QueryRequest.Name))
             {
                 query = query.Where(x => x.Name.Contains(QueryRequest.Name));
@@ -28,20 +30,22 @@ namespace Animes.Applications.Animes.Services
             {
                 query = query.Where(x => x.Name == QueryRequest.ExactlyName);
             }
-            return query;
+
         }
 
-        protected override Anime Insert(InsertCommand<Anime> command, InsertRequest<Anime> request)
+        protected override Anime Insert(InsertRequest<Anime> request)
         {
             AnimeInsertRequest InsertRequest = request as AnimeInsertRequest;
-            return command.Construct(InsertRequest.Name, InsertRequest.ImageUrl, InsertRequest.Link)
-                        .Execute();
+            return new Anime(){
 
+            };
         }
 
-        protected override Anime Update(UpdateCommand<Anime> command, UpdateRequest<Anime> request)
+        protected override UpdateCommand<Anime> Update(UpdateCommand<Anime> command, UpdateRequest<Anime> request)
         {
-            throw new NotImplementedException();
+            AnimeEditRequest InsertRequest = request as AnimeEditRequest;
+            return command
+                    .SetIfHasValue(x => x.ImageUrl, InsertRequest.ImageUrl)
         }
     }
 }

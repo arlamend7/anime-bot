@@ -42,7 +42,7 @@ namespace Libs.Base.Commands
         
         protected override void Execute(T entity)
         {
-            long key = _manipulationRepository.Save(Entity);
+            object key = _manipulationRepository.Save(Entity);
             Entity.SetId(key);
         }
     }

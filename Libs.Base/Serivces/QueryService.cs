@@ -3,9 +3,6 @@ using Libs.Base.Entities.Interfaces;
 using Libs.Base.Repositories;
 using Libs.Base.Serivces.Interfaces;
 using System;
-using System.Linq;
-using System.Linq.Expressions;
-
 namespace Libs.Base.Serivces
 {
     public class QueryService : IQueryService
@@ -37,13 +34,6 @@ namespace Libs.Base.Serivces
             return entity;
         }
 
-        public virtual T Get<T>(Expression<Func<T, bool>> expression)
-                        where T : EntityBase
-
-        {
-            return _repository.Get(expression);
-        }
-
         public virtual T Get<T>(long id)
                         where T : EntityBase
 
@@ -57,17 +47,14 @@ namespace Libs.Base.Serivces
         {
             T entity = Get<T>(id);
             if (entity is ILogicDelete logicDelete && logicDelete.IsDeleted)
-            {
-                return default;
-            }
+                entity = null;
             return entity;
         }
 
-        public virtual IQueryable<T> Query<T>()
+        public virtual object GetAll<T>()
                         where T : EntityBase
-
         {
-            return _repository.Query<T>();
+            return _repository.GetAll<T>();
         }
     }
 }
